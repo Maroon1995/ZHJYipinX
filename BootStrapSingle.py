@@ -1,14 +1,15 @@
 import sys
 import uuid
-from cio.CacheVariable import CacheValue
-from cio.Configuration import readConfig
-from process.Produce import getDatafromItemID
-from process.Consumer import getResult
-from util.RedisUtil import RedisHelper
-from util.SqlalchemyUtil import SQLUtil
-from util.LogUtil import MyLog
-from bean.SpecialCharactersInfo import StrReplaceInfo
-from common.DataInOut import DataIn, DataOut
+from ZHJYipinX.cio.CacheVariable import CacheValue
+from ZHJYipinX.cio.Configuration import readConfig
+
+from ZHJYipinX.util.RedisUtil import RedisHelper
+from ZHJYipinX.util.SqlalchemyUtil import SQLUtil
+from ZHJYipinX.util.LogUtil import MyLog
+from ZHJYipinX.bean.SpecialCharactersInfo import StrReplaceInfo
+from ZHJYipinX.common.DataInOut import DataIn, DataOut
+from ZHJYipinX.process.Consumer import getResult
+from ZHJYipinX.process.Produce import getDatafromItemID
 
 
 def run(item_id: str):

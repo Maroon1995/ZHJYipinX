@@ -1,15 +1,15 @@
 import sys
-from cio.CacheVariable import CacheValue
-from cio.Configuration import readConfig
-from process.Produce import getDatafromDB
-from process.Consumer import getResult
-from util.RedisUtil import RedisHelper
-from util.SqlalchemyUtil import SQLUtil
-from util.LogUtil import MyLog
-from bean.SpecialCharactersInfo import StrReplaceInfo
-from bean.BatchMaterialInfo import BatchMaterial
-from common.DataInOut import DataIn, DataOut
-from sqlalchemy import exists, and_, or_
+from ZHJYipinX.cio.CacheVariable import CacheValue
+from ZHJYipinX.cio.Configuration import readConfig
+from ZHJYipinX.process.Produce import getDatafromDB
+from ZHJYipinX.process.Consumer import getResult
+from ZHJYipinX.util.RedisUtil import RedisHelper
+from ZHJYipinX.util.SqlalchemyUtil import SQLUtil
+from ZHJYipinX.util.LogUtil import MyLog
+from ZHJYipinX.bean.SpecialCharactersInfo import StrReplaceInfo
+from ZHJYipinX.bean.BatchMaterialInfo import BatchMaterial
+from ZHJYipinX.common.DataInOut import DataIn, DataOut
+
 
 def run(soid: int):
     """
@@ -83,6 +83,6 @@ def run(soid: int):
 
 if __name__ == '__main__':
     # 任务soid
-    # soid = 1066110
-    # res = run(soid)
-    run(int(sys.argv[1]))
+    soid = 1066110
+    res = run(soid)
+    # run(int(sys.argv[1]))

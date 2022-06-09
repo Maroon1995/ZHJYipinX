@@ -1,8 +1,8 @@
 # 导入定义类需要的模块
 from sqlalchemy.ext.declarative import declarative_base  # 调用sqlalchemy的基类
-from sqlalchemy import Column, Index, distinct, update  # 指定字段属性，索引、唯一、DML
+from sqlalchemy import Column  # 指定字段属性，索引、唯一、DML
 from sqlalchemy.types import *  # 所有字段类型
-from cio.Configuration import readConfig
+from ZHJYipinX.cio.Configuration import readConfig
 
 # 创建库表类型
 Base = declarative_base()  # 调用sqlalchemy的基类

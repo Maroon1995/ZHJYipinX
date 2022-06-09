@@ -1,10 +1,8 @@
 
-import sys
-
-sys.path.append('../')
 from typing import List
-from bean.SpecialCharactersInfo import  StrReplaceInfo
-from process.Function import HandleItem
+from ZHJYipinX.bean.SpecialCharactersInfo import  StrReplaceInfo
+from ZHJYipinX.process.Function import HandleItem
+
 
 
 def Replace(coding: str, elemList: List[StrReplaceInfo]):

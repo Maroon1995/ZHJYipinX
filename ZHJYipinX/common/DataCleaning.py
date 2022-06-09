@@ -1,14 +1,14 @@
 
 import json
-from contants.Fields import FieldToGBK
-from contants.Variables import getVariable
+from ZHJYipinX.contants.Fields import FieldToGBK
+from ZHJYipinX.contants.Variables import getVariable
 from typing import List, Dict
-from common.DataInOut import DataIn, DataOut
-from process.Uniform import StrUniform, multProcessUniform
-from util.LogUtil import MyLog
-from bean.BatchMaterialInfo import BatchMaterial
-from bean.MainMaterialInfo import MainMaterial
-from bean.SpecialCharactersInfo import StrReplaceInfo
+from ZHJYipinX.common.DataInOut import DataIn, DataOut
+from ZHJYipinX.process.Uniform import StrUniform, multProcessUniform
+from ZHJYipinX.util.LogUtil import MyLog
+from ZHJYipinX.bean.BatchMaterialInfo import BatchMaterial
+from ZHJYipinX.bean.MainMaterialInfo import MainMaterial
+from ZHJYipinX.bean.SpecialCharactersInfo import StrReplaceInfo
 
 
 class UniformMaterial(object):

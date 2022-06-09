@@ -1,11 +1,11 @@
 
 from time import time
-from util.LogUtil import MyLog
-from common.DataInOut import DataIn, DataOut
-from common.DataCleaning import UniformMaterial
-from cio.Configuration import readConfig
-from bean.MainMaterialInfo import MainMaterial
-from bean.SpecialCharactersInfo import StrReplaceInfo
+from ZHJYipinX.util.LogUtil import MyLog
+from ZHJYipinX.common.DataInOut import DataIn, DataOut
+from ZHJYipinX.common.DataCleaning import UniformMaterial
+from ZHJYipinX.cio.Configuration import readConfig
+from ZHJYipinX.bean.MainMaterialInfo import MainMaterial
+from ZHJYipinX.bean.SpecialCharactersInfo import StrReplaceInfo
 
 def run():
     """

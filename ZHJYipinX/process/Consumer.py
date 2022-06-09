@@ -1,13 +1,13 @@
 
-from contants.Fields import FieldToGBK
-from contants.Variables import getVariable
-from common.DataInOut import DataOut
-from common.CalculateSimlary import similar
-from util.LogUtil import MyLog
+from ZHJYipinX.contants.Fields import FieldToGBK
+from ZHJYipinX.contants.Variables import getVariable
+from ZHJYipinX.common.DataInOut import DataOut
+from ZHJYipinX.common.CalculateSimlary import similar
+from ZHJYipinX.util.LogUtil import MyLog
 from multiprocessing import Pool
 from typing import List
-from bean.BatchMaterialUniformInfo import BatchMaterialUniform
-from bean.MainMaterialUniformInfo import MainMaterialUniform
+from ZHJYipinX.bean.BatchMaterialUniformInfo import BatchMaterialUniform
+from ZHJYipinX.bean.MainMaterialUniformInfo import MainMaterialUniform
 
 mylog = MyLog()
 

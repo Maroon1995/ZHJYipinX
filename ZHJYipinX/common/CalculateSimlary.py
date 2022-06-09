@@ -1,14 +1,14 @@
+
 from numpy import dot
 from numpy.linalg import norm
 from typing import List
-from common.CollectFunc import mkList
-from bean.BatchMaterialUniformInfo import BatchMaterialUniform
-from bean.MainMaterialUniformInfo import MainMaterialUniform
-from contants.Variables import getVariable
-from util.LogUtil import MyLog
+from ZHJYipinX.common.CollectFunc import mkList
+from ZHJYipinX.bean.BatchMaterialUniformInfo import BatchMaterialUniform
+from ZHJYipinX.bean.MainMaterialUniformInfo import MainMaterialUniform
+from ZHJYipinX.contants.Variables import getVariable
+from ZHJYipinX.util.LogUtil import MyLog
 
 mylog = MyLog()
-
 
 def cosinesimilarityNp(vecInt1: List[int], vecInt2: List[int]):
     """

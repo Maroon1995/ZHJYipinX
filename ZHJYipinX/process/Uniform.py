@@ -1,13 +1,13 @@
 
 from typing import List
 from multiprocessing import Pool
-from common.CalculateVector import getVectorString
-from common.CalculateSymbol import getNoSymbol
-from bean.BatchMaterialInfo import BatchMaterial
-from bean.MainMaterialInfo import MainMaterial
-from bean.BatchMaterialUniformInfo import BatchMaterialUniform
-from bean.MainMaterialUniformInfo import MainMaterialUniform
-from bean.SpecialCharactersInfo import StrReplaceInfo
+from ZHJYipinX.common.CalculateVector import getVectorString
+from ZHJYipinX.common.CalculateSymbol import getNoSymbol
+from ZHJYipinX.bean.BatchMaterialInfo import BatchMaterial
+from ZHJYipinX.bean.MainMaterialInfo import MainMaterial
+from ZHJYipinX.bean.BatchMaterialUniformInfo import BatchMaterialUniform
+from ZHJYipinX.bean.MainMaterialUniformInfo import MainMaterialUniform
+from ZHJYipinX.bean.SpecialCharactersInfo import StrReplaceInfo
 
 def StrUniform(byUniformDataInfo, elemList: List[StrReplaceInfo]):
     """

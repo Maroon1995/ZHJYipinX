@@ -1,9 +1,9 @@
 
 from typing import List
-from common.DataCleaning import UniformMaterial
-from common.DataInOut import DataIn, DataOut
-from bean.BatchMaterialInfo import BatchMaterial
-from bean.SpecialCharactersInfo import StrReplaceInfo
+from ZHJYipinX.common.DataCleaning import UniformMaterial
+from ZHJYipinX.common.DataInOut import DataIn, DataOut
+from ZHJYipinX.bean.BatchMaterialInfo import BatchMaterial
+from ZHJYipinX.bean.SpecialCharactersInfo import StrReplaceInfo
 
 def getDatafromItemID(input: DataIn, output: DataOut, task_id, item_id: str, SRIList: List[StrReplaceInfo],
                       startmp_threshold=100, core_process=6, mbr: str = "MaterialBatchResult"):

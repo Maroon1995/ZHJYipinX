@@ -1,7 +1,7 @@
 from typing import Dict
 
-from bean.MaterialBatchResultInfo import MaterialBatchResult
-from bean.MaterialSingleResultInfo import MaterialSingleResult
+from ZHJYipinX.bean.MaterialBatchResultInfo import MaterialBatchResult
+from ZHJYipinX.bean.MaterialSingleResultInfo import MaterialSingleResult
 
 di: Dict = {"MaterialBatchResult": MaterialBatchResult, "MaterialSingleResult": MaterialSingleResult}
 

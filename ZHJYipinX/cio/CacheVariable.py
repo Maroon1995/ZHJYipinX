@@ -1,13 +1,13 @@
 import json
 
 from typing import List,Dict
-from common.CalculateVector import getVectorString
-from common.CalculateSymbol import getNoSymbol
-from common.DataInOut import DataIn
-from bean.MainMaterialUniformInfo import MainMaterialUniform
-from bean.SpecialCharactersInfo import StrReplaceInfo
-from util.RedisUtil import RedisHelper
-from util.SqlalchemyUtil import SQLUtil
+from ZHJYipinX.common.CalculateVector import getVectorString
+from ZHJYipinX.common.CalculateSymbol import getNoSymbol
+from ZHJYipinX.common.DataInOut import DataIn
+from ZHJYipinX.bean.MainMaterialUniformInfo import MainMaterialUniform
+from ZHJYipinX.bean.SpecialCharactersInfo import StrReplaceInfo
+from ZHJYipinX.util.RedisUtil import RedisHelper
+from ZHJYipinX.util.SqlalchemyUtil import SQLUtil
 
 
 def _jsonStringToMMU(dicts: Dict):

@@ -1,9 +1,9 @@
 
 import csv
-from util.LogUtil import MyLog
-from util.SqlalchemyUtil import SQLUtil
+from ZHJYipinX.util.LogUtil import MyLog
+from ZHJYipinX.util.SqlalchemyUtil import SQLUtil
 from typing import List
-from bean.BatchMaterialInfo import BatchMaterial
+from ZHJYipinX.bean.BatchMaterialInfo import BatchMaterial
 
 class DataIn(object):
     mylog = MyLog()

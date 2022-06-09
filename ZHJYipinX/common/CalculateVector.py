@@ -1,6 +1,6 @@
 
 from collections import Counter
-from common.CollectFunc import getOrElse, mkString
+from ZHJYipinX.common.CollectFunc import getOrElse, mkString
 
 
 def getVectorString(strings: str):
