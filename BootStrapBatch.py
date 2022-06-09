@@ -83,6 +83,6 @@ def run(soid: int):
 
 if __name__ == '__main__':
     # 任务soid
-    soid = 1066110
-    res = run(soid)
-    # run(int(sys.argv[1]))
+    # soid = 1066110
+    # res = run(soid)
+    run(int(sys.argv[1]))

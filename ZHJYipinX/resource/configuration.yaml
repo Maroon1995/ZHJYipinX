@@ -35,4 +35,4 @@ database:
     url: ""
 # 路径变量
 path:
-  log_path: 'H:\Project\pythonworkspace\ZHJ-YIPIN-X\ZHJYipinX\ZHJYipinX\logs\yipin.log'
+  log_path: 'H:\Project\pythonworkspace\ZHJ-YIPIN-X\ZHJYipinX\logs\yipin.log'
