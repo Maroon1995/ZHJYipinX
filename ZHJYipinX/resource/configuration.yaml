@@ -13,7 +13,7 @@ basevariable:
   startmp_threshold: 50   # 默认开启多进程计算向量的阈值
   core_process: 4         # 默认多进程核心数
   filterCondition: 0      # 筛选数据的条件
-  expireTime: 6000        # redis中存储数据过期时间
+  expireTime: 120000      # redis中存储数据过期时间
 # DB数据库
 # '192.168.192.137'  测试环境
 # '192.168.192.145'  生产环境

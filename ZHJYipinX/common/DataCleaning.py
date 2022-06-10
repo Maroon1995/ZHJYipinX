@@ -46,7 +46,7 @@ class UniformMaterial(object):
             # 在主数据中查询当前数据是否存在，如果存在返回查询到的数据，并封装成MateialBatchResult返回。
             queryRes: List[MainMaterial] = self.input.mysqlFileData(MainMaterial,
                                                                     filterCondition=MainMaterial.ITEM_ID == elemMI.ITEM_ID)
-            if len(queryRes) > 0:
+            if len(queryRes) > 0 and queryRes[0]!=None:
                 for eleQR in queryRes:
                     mbr = getVariable(self.mbr)(elemMI.soid, elemMI.ITEM_ID,
                                                 eleQR.ITEM_ID, 1,

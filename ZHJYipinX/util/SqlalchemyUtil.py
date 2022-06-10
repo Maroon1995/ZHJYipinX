@@ -93,7 +93,7 @@ class SQLUtil(object):
             # 插入单条数据
             # （1）如果存在就删除
             self.session.query(type(updateOneDataInfo)).filter(
-                type(updateOneDataInfo).MaterialDrawing == updateOneDataInfo.MaterialDrawing).delete()
+                type(updateOneDataInfo).ITEM_ID == updateOneDataInfo.ITEM_ID).delete()
             # （2）然后插入新的数据
             self.session.add(updateOneDataInfo)
             self.session.commit()
@@ -120,7 +120,7 @@ class SQLUtil(object):
                     # 插入单条数据
                     # （1）如果存在就删除
                     self.session.query(type(elemInfo)).filter(
-                        type(elemInfo).MaterialDrawing == elemInfo.MaterialDrawing).delete()
+                        type(elemInfo).ITEM_ID == elemInfo.ITEM_ID).delete()
                     # （2）然后插入新的数据
                     self.session.add(elemInfo)
                     self.session.commit()

@@ -19,7 +19,7 @@ def StrUniform(byUniformDataInfo, elemList: List[StrReplaceInfo]):
     """
     # print('<进程%s> StrUniform get  %s' % (os.getpid(), byUniformDataInfo.item_id))
     # TODO 1- 计算统一码
-    newstr6 = getNoSymbol(byUniformDataInfo, elemList)
+    newstr6 = getNoSymbol(byUniformDataInfo.ITEM_ID, elemList)
     # TODO 2- 计算向量 CalculateVector.getVectorString
     newstr7 = getVectorString(newstr6)
     # TODO 3- 封装成实例对象 MaterialUniformInfo

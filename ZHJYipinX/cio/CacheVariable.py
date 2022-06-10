@@ -1,6 +1,6 @@
 import json
 
-from typing import List,Dict
+from typing import List, Dict
 from ZHJYipinX.common.CalculateVector import getVectorString
 from ZHJYipinX.common.CalculateSymbol import getNoSymbol
 from ZHJYipinX.common.DataInOut import DataIn
@@ -64,30 +64,34 @@ def CacheValue(input: DataIn, SRIList: List[StrReplaceInfo], conn_db: SQLUtil, r
             "MUIListNoDigit", expireTime) == True:  # 如果，两个username均存在, 且flag=1，则更新redis中对应的值，然后再获取数据
         # 从DB中获取MainMaterialUniform中status == 1的所有数据
         MUIListStatus: List[MainMaterialUniform] = input.mysqlFileData(MainMaterialUniform,
-                                                                   filterCondition=MainMaterialUniform.status == 1)
+                                                                       filterCondition=MainMaterialUniform.status == 1)
         for i in range(len(MUIListStatus)):  # 更新数据
             eleMUIStatus = MUIListStatus[i]
-            eleMUIStatus.vector = getVectorString(eleMUIStatus.MaterialDrawing)  # 更新向量
-            eleMUIStatus.uniformitem = getNoSymbol(eleMUIStatus, SRIList)  # 更新uniformitem
+            eleMUIStatus.vector = getVectorString(eleMUIStatus.PEOPLE_ONLYITEM)  # 更新向量
+            eleMUIStatus.uniformitem = getNoSymbol(eleMUIStatus.PEOPLE_ONLYITEM, SRIList)  # 更新uniformitem
             eleMUIStatus.status = 0  # 将状态更新成0，表示已经成为历史物料
             new_data = json.dumps(dict(eleMUIStatus))
             dicts = dict(eleMUIStatus)
             newList.append(_jsonStringToMMU(dicts))  # 将更后的数据添加到等待同步到DB数据库的列表中
 
-            if redisUtil.isExists_hset("MUIListIsDigit", eleMUIStatus.MaterialDrawing,
+            if redisUtil.isExists_hset("MUIListIsDigit", eleMUIStatus.ITEM_ID,
                                        expireTime) == 1:  # 如果存在,则先删除该key-value，再添加key_newvalue
-                redisUtil.del_hset("MUIListIsDigit", eleMUIStatus.MaterialDrawing, expireTime)
-                redisUtil.add_hset("MUIListIsDigit", eleMUIStatus.MaterialDrawing, new_data, expireTime)
+                redisUtil.del_hset("MUIListIsDigit", eleMUIStatus.ITEM_ID, expireTime)
+                redisUtil.add_hset("MUIListIsDigit", eleMUIStatus.ITEM_ID, new_data, expireTime)
 
-            elif redisUtil.isExists_hset("MUIListNoDigit", eleMUIStatus.MaterialDrawing,
+            elif redisUtil.isExists_hset("MUIListNoDigit", eleMUIStatus.ITEM_ID,
                                          expireTime) == 1:  # 如果存在,则先删除该key-value，再添加key_newvalue
-                redisUtil.del_hset("MUIListNoDigit", eleMUIStatus.MaterialDrawing, expireTime)
-                redisUtil.add_hset("MUIListNoDigit", eleMUIStatus.MaterialDrawing, new_data, expireTime)
+                redisUtil.del_hset("MUIListNoDigit", eleMUIStatus.ITEM_ID, expireTime)
+                redisUtil.add_hset("MUIListNoDigit", eleMUIStatus.ITEM_ID, new_data, expireTime)
             else:
                 if eleMUIStatus.uniformitem.isdigit():  # 以上两种情况都不存在，则直接判断是否为数值型字符串，然后添加
-                    redisUtil.add_hset("MUIListIsDigit", eleMUIStatus.MaterialDrawing, new_data, expireTime)
+                    redisUtil.add_hset("MUIListIsDigit", eleMUIStatus.ITEM_ID, new_data, expireTime)
                 else:
-                    redisUtil.add_hset("MUIListNoDigit", eleMUIStatus.MaterialDrawing, new_data, expireTime)
+                    redisUtil.add_hset("MUIListNoDigit", eleMUIStatus.ITEM_ID, new_data, expireTime)
+
+        print("从redis中获取")
+        MUIListIsDigit = getIsOrNoDigitList("MUIListIsDigit", redisUtil, expireTime)
+        MUIListNoDigit = getIsOrNoDigitList("MUIListNoDigit", redisUtil, expireTime)
 
     else:  # 否则，从DB数据库中获取,并重新更新redis中的全部数据
         # 从数据库中获取数据
@@ -103,8 +107,8 @@ def CacheValue(input: DataIn, SRIList: List[StrReplaceInfo], conn_db: SQLUtil, r
             # -----------------------------------------------
             # （1）更新MainMaterialUniform中的向量vector，当状态status为1的时候
             if eleMUI.status == 1:  # 当eleMUI状态为1时，说明该图号已经被确认过，需要对其进行一次更新向量的操作
-                eleMUI.vector = getVectorString(eleMUI.uniformitem)  # 更新向量
-                eleMUI.uniformitem = getNoSymbol(eleMUI, SRIList)  # 更新uniformitem
+                eleMUI.vector = getVectorString(eleMUI.PEOPLE_ONLYITEM)  # 更新向量
+                eleMUI.uniformitem = getNoSymbol(eleMUI.PEOPLE_ONLYITEM, SRIList)  # 更新uniformitem
                 eleMUI.status = 0  # 将状态更新成0，表示已经成为历史物料
                 dicts = dict(eleMUI)
                 newList.append(_jsonStringToMMU(dicts))  # 将更后的数据添加到等待同步到DB数据库的列表中

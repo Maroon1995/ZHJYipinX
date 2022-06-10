@@ -1,9 +1,9 @@
-
 from typing import List
 from ZHJYipinX.common.DataCleaning import UniformMaterial
 from ZHJYipinX.common.DataInOut import DataIn, DataOut
 from ZHJYipinX.bean.BatchMaterialInfo import BatchMaterial
 from ZHJYipinX.bean.SpecialCharactersInfo import StrReplaceInfo
+
 
 def getDatafromItemID(input: DataIn, output: DataOut, task_id, item_id: str, SRIList: List[StrReplaceInfo],
                       startmp_threshold=100, core_process=6, mbr: str = "MaterialBatchResult"):
@@ -22,9 +22,7 @@ def getDatafromItemID(input: DataIn, output: DataOut, task_id, item_id: str, SRI
 
 
 def getDatafromDB(input: DataIn, output: DataOut, tabelname: BatchMaterial, SRIList: List[StrReplaceInfo],
-                  filterCondition=0,
-                  limitnum: int = None,
-                  startmp_threshold=100, core_process=6, mbr: str = "MaterialBatchResult"):
+                  filterCondition=0, limitnum: int = None, startmp_threshold=100, core_process=6, mbr: str = "MaterialBatchResult"):
     """
     获取DB数据库数据
      :param input: 数据输入实例对象

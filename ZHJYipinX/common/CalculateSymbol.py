@@ -19,16 +19,16 @@ def Replace(coding: str, elemList: List[StrReplaceInfo]):
 
     return newcoding
 
-def getNoSymbol(byUniformDataInfo, elemList: List[StrReplaceInfo]):
+def getNoSymbol(field, elemList: List[StrReplaceInfo]):
     """
     处理单条字符串中多样性元素
-    :param byUniformDataInfo: 是一个被统一的DataInfo实例对象
+    :param field: 是一个被统一的字段对应的值
     :param elemList: 用于需要统一的元素对象
     :return: 返回单条处理后的字符串
     """
     HI = HandleItem
     # TODO 1- 元素多样
-    newstr = Replace(byUniformDataInfo.ITEM_ID, elemList)
+    newstr = Replace(field, elemList)
     # TODO 2- 处理首行缺零字符的编码-'0247773','247773'
     newstr2 = HI(newstr).FirstCharZeros()
     # TODO 3- 转换罗马数字
