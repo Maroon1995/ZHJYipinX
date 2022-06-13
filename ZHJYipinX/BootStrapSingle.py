@@ -1,24 +1,23 @@
 import sys
 import uuid
-from ZHJYipinX.cio.CacheVariable import CacheValue
+from ZHJYipinX.cio.CacheVariable import Caches
 from ZHJYipinX.cio.Configuration import readConfig
-
+from ZHJYipinX.util.LogUtil import MyLog
 from ZHJYipinX.util.RedisUtil import RedisHelper
 from ZHJYipinX.util.SqlalchemyUtil import SQLUtil
-from ZHJYipinX.util.LogUtil import MyLog
-from ZHJYipinX.bean.SpecialCharactersInfo import StrReplaceInfo
+from ZHJYipinX.common.ResumeTime import get_time
 from ZHJYipinX.common.DataInOut import DataIn, DataOut
 from ZHJYipinX.process.Consumer import getResult
 from ZHJYipinX.process.Produce import getDatafromItemID
+from ZHJYipinX.bean.SpecialCharactersInfo import StrReplaceInfo
 
-
+@get_time
 def run(item_id: str):
     """
     :param task_id: 任务id
     :param task_data: 接收到的任务数据
     :return:
     """
-    # ------------------------------------------------------------------------------------------------
     # TODO 0- 配置文件
     cfg = readConfig()
     base_config = cfg["basevariable"]
@@ -63,10 +62,13 @@ def run(item_id: str):
     else:
         try:
             if (len(BUIListIsDigit) != 0 or len(BUIListNoDigit) != 0):
-                # （4）主量数据
-                MUIListIsDigit, MUIListNoDigit = CacheValue(input=input, SRIList=SRIList, conn_db=conn_db,
-                                                            redisUtil=redisUtil,
-                                                            expireTime=expireTime)
+                # 获取主量数据并缓存
+                cache = Caches(expireTime=expireTime,SRIList=SRIList)
+                cache.input = input
+                cache.conn_db = conn_db
+                cache.redisUtil = redisUtil
+                MUIListIsDigit, MUIListNoDigit = cache.CacheValue()
+
                 print("MUIListIsDigit: {}; MUIListNoDigit: {}".format(len(MUIListIsDigit), len(MUIListNoDigit)))
                 if len(BUIListIsDigit) > 0:  # 数值型
                     getResult(output, BUIListIsDigit, MUIListIsDigit, similarthreshold, core_process, startmp_threshold,

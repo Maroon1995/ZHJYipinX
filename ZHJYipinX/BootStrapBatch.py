@@ -1,5 +1,5 @@
 import sys
-from ZHJYipinX.cio.CacheVariable import CacheValue
+from ZHJYipinX.cio.CacheVariable import Caches
 from ZHJYipinX.cio.Configuration import readConfig
 from ZHJYipinX.process.Produce import getDatafromDB
 from ZHJYipinX.process.Consumer import getResult
@@ -9,8 +9,9 @@ from ZHJYipinX.util.LogUtil import MyLog
 from ZHJYipinX.bean.SpecialCharactersInfo import StrReplaceInfo
 from ZHJYipinX.bean.BatchMaterialInfo import BatchMaterial
 from ZHJYipinX.common.DataInOut import DataIn, DataOut
+from ZHJYipinX.common.ResumeTime import get_time
 
-
+@get_time
 def run(soid: int):
     """
     :param task_id: 任务id
@@ -54,17 +55,20 @@ def run(soid: int):
     print("BUIListIsDigit: {}; BUIListNoDigit: {};query_milist:{}".format(len(BUIListIsDigit), len(BUIListNoDigit),
                                                                           len(query_milist)))
     # ------------------------------------------------------------------------------------------------
-    # TODO 3- 计算相似度 CalculateSimlary 并输出结果 Data.DataOut ————进行了多进程优化
+    # TODO 3- 计算相似度 CalculateSimilar 并输出结果 Data.DataOut ————进行了多进程优化
     if (len(BUIListIsDigit) == 0 and len(BUIListNoDigit) == 0 and len(query_milist) == 0):
         mylog.error("输入的数据为None")
         return 0
     else:
         try:
             if(len(BUIListIsDigit) != 0 or len(BUIListNoDigit) != 0):
-                # （3）主量数据
-                MUIListIsDigit, MUIListNoDigit = CacheValue(input=input, SRIList=SRIList, conn_db=conn_db,
-                                                            redisUtil=redisUtil,
-                                                            expireTime=expireTime)
+                # 获取主量数据并缓存
+                cache = Caches(expireTime=expireTime, SRIList=SRIList)
+                cache.input = input
+                cache.conn_db = conn_db
+                cache.redisUtil = redisUtil
+                MUIListIsDigit, MUIListNoDigit = cache.CacheValue()
+
                 print("MUIListIsDigit: {}; MUIListNoDigit: {}".format(len(MUIListIsDigit), len(MUIListNoDigit)))
                 if len(BUIListIsDigit) > 0:  # 数值型
                     getResult(output, BUIListIsDigit, MUIListIsDigit, similarthreshold, core_process, startmp_threshold,
@@ -83,6 +87,6 @@ def run(soid: int):
 
 if __name__ == '__main__':
     # 任务soid
-    # soid = 11349
+    # soid = 13074
     # res = run(soid)
     run(int(sys.argv[1]))

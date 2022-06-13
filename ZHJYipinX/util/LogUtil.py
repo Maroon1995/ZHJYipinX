@@ -14,15 +14,13 @@ class MyLog(object):
         self.logger = logging.getLogger(user)  # 返回一个特定名字的日志
         self.logger.setLevel(logging.INFO)  # 对显示的日志信息设置一个阈值低于DEBUG级别的不显示
 
-        # logFile = './' + sys.argv[1][0:-3] + '.log'  # 日志文件名
-        # logFile = 'F:\Accumulation\BaiduNetdiskWorkspace\Project\pythonworkspace\OnlyMaterialZHJSys\log\yipin.log'
         logFile = readConfig()["path"]["log_path"]
         formatter = logging.Formatter(fmt) # 日志格式
 
         '''日志显示到屏幕上并输出到日志文件内'''
         logHand = logging.FileHandler(logFile)  # 输出日志文件，文件名是logFile
         logHand.setFormatter(formatter)  # 为logHand以formatter设置格式
-        logHand.setLevel("INFO")  # 设置输出到日志文件logfile中的日志级别
+        logHand.setLevel("ERROR")  # 设置输出到日志文件logfile中的日志级别
 
         logHandSt = logging.StreamHandler()  # class logging.StreamHandler(stream=None)
         # 返回StreamHandler类的实例，如果stream被确定，使用该stream作为日志输出，反之，使用
