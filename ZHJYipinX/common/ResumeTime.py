@@ -1,5 +1,5 @@
 from time import time
-from util.LogUtil import MyLog
+from ZHJYipinX.util.LogUtil import MyLog
 
 def get_time(f):
 
