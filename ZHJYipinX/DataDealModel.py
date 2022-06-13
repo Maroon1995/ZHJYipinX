@@ -1,12 +1,14 @@
 
 from time import time
 from ZHJYipinX.util.LogUtil import MyLog
+from ZHJYipinX.common.ResumeTime import get_time
 from ZHJYipinX.common.DataInOut import DataIn, DataOut
 from ZHJYipinX.common.DataCleaning import UniformMaterial
 from ZHJYipinX.cio.Configuration import readConfig
 from ZHJYipinX.bean.MainMaterialInfo import MainMaterial
 from ZHJYipinX.bean.SpecialCharactersInfo import StrReplaceInfo
 
+@get_time
 def run():
     """
     清洗主数据以及向量化
@@ -51,8 +53,4 @@ def run():
 
 if __name__ == '__main__':
 
-    start_time2 = time()
     run()
-    end_time2 = time()
-    print("===" * 10)
-    print('存储耗时(ms)：', (end_time2 - start_time2) * 1000)
