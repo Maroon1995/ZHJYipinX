@@ -42,7 +42,7 @@ def similar(elemBUI: BatchMaterialUniform, elemMUI: MainMaterialUniform, similar
     if sim >= similarthreshold:
 
         return getVariable(mbr)(elemBUI.soid, elemBUI.ITEM_ID, elemMUI.ITEM_ID, sim, elemMUI.ITEM_NAME_CH,
-                                elemMUI.PEOPLE_NAME_EN, elemMUI.ITEM_UNIT, elemMUI.PDM_ID, elemMUI.ONE_TYPE, 1,
+                                elemMUI.ITEM_NAME_EN, elemMUI.ITEM_UNIT, elemMUI.PDM_ID, elemMUI.ONE_TYPE, 1,
                                 elemMUI.PEOPLE_ONLYITEM, elemMUI.PEOPLE_NAME_CH, elemMUI.PEOPLE_NAME_EN,
                                 elemMUI.PEOPLE_UNIT)
     else:
