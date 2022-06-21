@@ -1,8 +1,8 @@
-
 from typing import List
 from ZHJYipinX.util.LogUtil import MyLog
 from sqlalchemy import create_engine  # 引擎
 from sqlalchemy.orm import sessionmaker  # 创建orm的会话池，orm和sql均可以管理对象关系型数据库，需要绑定引擎才可以使用会话，
+from urllib.parse import quote_plus as urlquote
 
 
 
@@ -29,7 +29,7 @@ class SQLUtil(object):
         self.user = user
         self.password = password
         # self.charset = charset
-        self.path = path
+        self.path = eval(path)
         self.port = port
         self.engine = None
         self.session = None
